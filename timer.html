@@ -1,0 +1,245 @@
+<!-- <div class="container"></div>
+
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.container {
+  margin: auto;
+  width: 400px;
+}
+
+.path--background {
+  fill: rgb(34, 213, 201);
+  stroke: #fff;
+  stroke-width: 0px;
+}
+
+.pulse {
+  fill: rgb(255, 74, 74) !important;
+}
+
+.path--foreground {
+  fill: #eee;
+  stroke: #eee;
+  stroke-width: 2px;
+}
+
+.label {
+  font: 90px "Open Sans";
+  font-weight: 900;
+  text-anchor: middle;
+  fill: rgb(34, 213, 201);
+}
+</style>
+
+<script>
+    var width = 400,
+  height = 400,
+  timePassed = 0,
+  timeLimit = 30;
+
+var fields = [{
+  value: timeLimit,
+  size: timeLimit,
+  update: function() {
+    return timePassed = timePassed + 1;
+  }
+}];
+
+var nilArc = d3.svg.arc()
+  .innerRadius(width / 3 - 133)
+  .outerRadius(width / 3 - 133)
+  .startAngle(0)
+  .endAngle(2 * Math.PI);
+
+var arc = d3.svg.arc()
+  .innerRadius(width / 3 - 55)
+  .outerRadius(width / 3 - 25)
+  .startAngle(0)
+  .endAngle(function(d) {
+    return ((d.value / d.size) * 2 * Math.PI);
+  });
+
+var svg = d3.select(".container").append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+var field = svg.selectAll(".field")
+  .data(fields)
+  .enter().append("g")
+  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+  .attr("class", "field");
+
+var back = field.append("path")
+  .attr("class", "path path--background")
+  .attr("d", arc);
+
+var path = field.append("path")
+  .attr("class", "path path--foreground");
+
+var label = field.append("text")
+  .attr("class", "label")
+  .attr("dy", ".35em");
+
+(function update() {
+
+  field
+    .each(function(d) {
+      d.previous = d.value, d.value = d.update(timePassed);
+    });
+
+  path.transition()
+    .ease("elastic")
+    .duration(500)
+    .attrTween("d", arcTween);
+
+  if ((timeLimit - timePassed) <= 10)
+    pulseText();
+  else
+    label
+    .text(function(d) {
+      return d.size - d.value;
+    });
+
+  if (timePassed <= timeLimit)
+    setTimeout(update, 1000 - (timePassed % 1000));
+  else
+    destroyTimer();
+
+})();
+
+function pulseText() {
+  back.classed("pulse", true);
+  label.classed("pulse", true);
+
+  if ((timeLimit - timePassed) >= 0) {
+    label.style("font-size", "120px")
+      .attr("transform", "translate(0," + +4 + ")")
+      .text(function(d) {
+        return d.size - d.value;
+      });
+  }
+
+  label.transition()
+    .ease("elastic")
+    .duration(900)
+    .style("font-size", "90px")
+    .attr("transform", "translate(0," + -10 + ")");
+}
+
+function destroyTimer() {
+  label.transition()
+    .ease("back")
+    .duration(700)
+    .style("opacity", "0")
+    .style("font-size", "5")
+    .attr("transform", "translate(0," + -40 + ")")
+    .each("end", function() {
+      field.selectAll("text").remove()
+    });
+
+  path.transition()
+    .ease("back")
+    .duration(700)
+    .attr("d", nilArc);
+
+  back.transition()
+    .ease("back")
+    .duration(700)
+    .attr("d", nilArc)
+    .each("end", function() {
+      field.selectAll("path").remove()
+    });
+}
+
+function arcTween(b) {
+  var i = d3.interpolate({
+    value: b.previous
+  }, b);
+  return function(t) {
+    return arc(i(t));
+  };
+}
+</script> -->\
+
+
+
+
+<div id="countdown">
+  
+</div>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700italic);
+body {
+  background-color: black;  
+}
+#countdown {
+  font-family: 'Roboto Condensed', sans-serif;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -50px;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  .opacity(1.0);
+  .transition(opacity 0.4s ease);
+  /* solve for flicker problem */
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;    
+} 
+#countdown.puffer {
+  .opacity(0);
+  .transform(scale(1.6,1.6));
+  .transition(all 0.4s ease-out);
+}
+
+/* LESS Mixins */
+.opacity (@opacity: 0.5) {
+	-webkit-opacity: 	@opacity;
+	-moz-opacity: 		@opacity;
+	opacity: 		@opacity;
+}
+.transition (@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition:    @transition;
+	-ms-transition:     @transition; 
+	-o-transition:      @transition;  
+}
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: 	 @string;
+	-ms-transform: 		 @string;
+	-o-transform: 		 @string;
+}
+</style>
+
+<script>
+    var startNum;
+var currentNum;
+
+function addClassDelayed(jqObj, c, to) {    
+    setTimeout(function() { jqObj.addClass(c); }, to);
+}
+
+function anim() { 
+  addClassDelayed($("#countdown"), "puffer", 600);
+  if (currentNum == 0) currentNum = startNum-1; else currentNum--;
+  $('#countdown').html(currentNum+1);
+  $('#countdown').removeClass("puffer");
+}
+      
+$(function() {
+  startNum = 25; 
+  currentNum = startNum;
+  $("#countdown").html(currentNum); // init first time based on n
+  self.setInterval(function(){anim()},1325);
+});
+</script>

@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>INFLYNX | Payment </title>
+    <link rel="icon" type="image/x-icon" href="home/infl.cp.png" style="width: 100%;">
+</head>
+    <body style="background-color:white">
+        
+       
+            <form onsubmit="check()" target="_parent" action="load.html" > 
+                <h1> enter the OTP </h1> 
+                <p id="demo"><label for="phone"> <b> OTP </b></label>
+            <input type="text" id="phone" name="phone"  pattern="\d{4,6}"  title="invalid otp" maxlength="6" required ><br><br></p>
+     
+ 
+
+            <button id="myButton" class="float-left submit-button" >SUBMIT</button>
+            
+        </form>
+        <p class="oe" id="one"> </p>
+       <!-- <script>
+        function check(){
+
+            x=document.getElementById("phone").value;
+
+            if(x==""){
+                alert("Enter OTP");
+            }
+
+            
+            // else if (x.length>=4) {
+            //     window.open("load.html");
+            // }
+        }
+
+
+       </script> -->
+
+<style>
+    body{
+       margin-top: 90px;
+       margin-left: 420px;
+    }
+    .oe{
+        font-size: medium;
+        color: red;
+        margin-left: 250px;
+        margin-top: -70px;
+    }
+
+    button{
+    width: 160px;
+    height: 40px;
+    background: rgb(255, 255, 255);
+    border: 2px solid black;
+    margin-top: px;
+    margin-left: 35px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+    color: rgb(0, 0, 0);}
+
+    button:hover{
+    border:2px solid greenyellow;
+}
+</style>
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+
+  <head> 
+    <title>INFLYNX | Payment </title>
+    <link rel="icon" type="image/x-icon" href="home/infl.cp.png" style="width: 100%;">
+  </head>
+
+  <body>
+    
+    <form action="otp.html">
+      <h1> CREDIT / DEBIT CARD </h1>
+       <b> NAME </b>  <input type="text" id="name" class="one"  required> <br> <br>
+       <b>CARD  NUMBER </b><input class="two" type="text" pattern="\d{10,12}" title="invalid card number " maxlength="12"  id="card" required> <br> <br>
+       <b> VALID </b><input type="month" class="three" required> <br> <br>
+       <b> CVV </b><input type="password"  class="four" maxlength="3" pattern="\d{3,3}"  title="CVV should be 3 number" required> <br> <br>
+      <button type="submit" class="pay" >  PAY </button>
+      <h3>   <img src="profile/credit-card-black-png-0-removebg-preview.png" style="margin-left:-350px  ; margin-top:-350px"></h3>
+
+
+
+    </form>
+    
+  </body>
+  
+    <br>
+    
+    <script>
+//       function check(){
+//         x=document.getElementById("name").value 
+
+//         if(x==""){
+//          alert("enter Name");
+//           return false;
+//         }
+//         else {
+//           window.open("load.html");
+//         }
+
+// //         y=document.getElementById("card").value 
+// //         if(y==""){
+// //           alert("enter card number");
+// //           return false;
+// // }
+
+
+  
+
+//       }
+//     </script>
+
+  </body>
+  <style>
+    body{
+      margin-left: 400px;
+      margin-top: 80px;
+      font-size: large;
+    }
+    .one{
+      margin-left: 120px;
+    }
+    .two{
+      margin-left: 40px;
+    }
+    .three{
+      margin-left: 120px;
+    }
+    .four{
+      margin-left: 135px;
+    }
+    button{
+
+    width: 160px;
+    height: 40px;
+    background: rgb(255, 255, 255);
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 100px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+    color: rgb(0, 0, 0);
+    }
+    button:hover{
+    border:2px solid greenyellow;
+}
+  </style>

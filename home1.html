@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>INFLYNX</title>
+    <link rel="icon" type="image/x-icon" href="home/infl.cp.png" style="width: 100%;">
+</head>
+<body>
+     
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <a href="home1.html">  <h2 class="logo"><img src="home/logo-removebg-preview.png" style="height: 150px;width: 300px;margin-left: -150px;margin-top: 20px;"></h2> </a>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li> <div class="drop">
+                        <a> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                            <i class="fa fa-shopping-bag" style="font-size:36px"></i> </a>
+                        <div class="down">
+                        <a href="mob1.html">  <span> Mobiles </span></a>
+                        <br>
+                        <a href="lap1.html">   <span>Laptops </span></a>
+                        </div>
+                      </div></li>
+                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <li><a href="cart4.html"> <i class="fa fa-shopping-cart" style="font-size:36px"></i></a></li>
+                    <li> <div class="drop">
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <a> <i class="fa fa-user" style="font-size:36px"></i> </a>
+                        <div class="down">
+                        <a href="order history.html"> order history </a>
+                        <br>
+                        <a href="reset pass.html"> change password </a><br>
+                        <a href="home.html">  log out </a>
+                        </div>
+                      </div></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="search here">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1>Welcome to <br><span><b>INFLYNX</b></span> </h1>
+        
+
+                <button class="cn"><a href="lap1.html">SHOP NOW</a></button>
+                    </div>
+                </div>
+                
+                
+        </div>
+        <div class="image">
+            <img src="home/iPhone_X_front_face_inline.jpg.large-removebg-preview.png">
+        </div>
+       
+        <div class="im">
+            <img src="home/tc-removebg-preview.png" >
+        </div>
+        <div class="ho">
+          <div id="container">
+          <span id="text1"></span>
+          <span id="text2"></span>
+      </div>
+      </div>
+      
+      <svg id="filters">
+          <defs>
+              <filter id="threshold">
+                  <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 255 -140" />
+              </filter>
+          </defs>
+      </svg>
+      <style>
+        
+          @import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
+      
+      s
+      }
+      
+      .ho #container {
+          position: absolute;
+          margin: auto;
+          width: 100vw;
+          height: 80pt;
+          top: 0;
+          bottom: 0;
+          
+          filter: url(#threshold) blur(0.6px);
+      }
+      
+      #text1,
+      #text2 {
+          position: absolute;
+          width: 100%;
+          display: inline-block;
+      
+          font-family: "Raleway", sans-serif;
+          font-size: 50pt;
+      
+          text-align: center;
+          margin-top: -508px;
+          padding-left: 1300px;
+  
+      
+          user-select: none;
+      }
+      </style>
+      <script>const elts = {
+          text1: document.getElementById("text1"),
+          text2: document.getElementById("text2")
+      };
+      
+      const texts = [
+          "If",
+          "You",
+          "Like",
+          "it",
+          "buy",
+          "it",
+          ":)",
+        
+      ];
+      
+      const morphTime = 0.1;
+      const cooldownTime = 1;
+      
+      let textIndex = texts.length - 1;
+      let time = new Date();
+      let morph = 0;
+      let cooldown = cooldownTime;
+      
+      elts.text1.textContent = texts[textIndex % texts.length];
+      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+      
+      function doMorph() {
+          morph -= cooldown;
+          cooldown = 0;
+      
+          let fraction = morph / morphTime;
+      
+          if (fraction > 1) {
+              cooldown = cooldownTime;
+              fraction = 1;
+          }
+      
+          setMorph(fraction);
+      }
+      
+      function setMorph(fraction) {
+          elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+          elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 70}%`;
+      
+          fraction = 1 - fraction;
+          elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+          elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 70}%`;
+      
+          elts.text1.textContent = texts[textIndex % texts.length];
+          elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+      }
+      
+      function doCooldown() {
+          morph = 0;
+      
+          elts.text2.style.filter = "";
+          elts.text2.style.opacity = "100%";
+      
+          elts.text1.style.filter = "";
+          elts.text1.style.opacity = "0%";
+      }
+      
+      function animate() {
+          requestAnimationFrame(animate);
+      
+          let newTime = new Date();
+          let shouldIncrementIndex = cooldown > 0;
+          let dt = (newTime - time) / 1000;
+          time = newTime;
+      
+          cooldown -= dt;
+      
+          if (cooldown <= 0) {
+              if (shouldIncrementIndex) {
+                  textIndex++;
+              }
+      
+              doMorph();
+          } else {
+              doCooldown();
+          }
+      }
+      
+      animate();</script>
+        <h5> just one touch away <br> from infinity <br>
+        <a href="mob1.html"> buy now </a> </h5>
+        
+    </div>
+   
+    <div class="scroll">
+      <h2 ><br> <img src="home/infl.png"> </h2>
+      <h1></h1><br>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h3 class="animate-charcter" style="margin-left: 460px;"> INFLYNX Katana GF66 </h3>
+            </div>
+          </div>
+        </div>
+
+        <style>
+            .animate-charcter
+            {
+               text-transform: uppercase;
+               background-image: linear-gradient(
+                -225deg,
+                #231557 0%,
+                #44107a 29%,
+                #ff1361 67%,
+                #fff800 100%
+                );
+
+              background-size: auto auto;
+              background-clip: border-box;
+              background-size: 200% auto;
+              color: #fff;
+              background-clip: text;
+              text-fill-color: transparent;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: textclip 2s linear infinite;
+              display: inline-block;
+              font-size: 3em;
+              padding-left: -20px;
+            }
+            .scroll h3{
+              margin-left: 60s0px;
+              margin-top: -30px;
+            }
+
+          @keyframes textclip {
+            to {
+                background-position: 200% center;
+                }
+            }
+  
+        </style>
+        
+   
+      <h5>  it is ready for an adventure and hard work with you </h5><br> <br>
+      <a href="spec/spec 14.html" target="self" class="btn-shine" target="_blank">learn more </a>
+      <style>
+        
+        .btn-shine{
+  position: absolute
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%,-50%);
+  padding: 12px 48px;
+  color: #ffffff;
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+        } 
+
+@keyframes shine{
+0%
+    {
+      background-position: 0;
+  }
+  70%{
+    background-position: 250px;
+  }
+  100% 
+  {
+    background-position: 180px;
+  }
+}
+      </style>
+          <a href="lap1.html" class="btn-shine" > buy now </a>
+          <style>
+            .btn-shine{
+      position: absolute
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      padding: 12px 48px;
+      color: #ffffff;
+      background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+      background-position: 0;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+      animation-fill-mode: forwards;
+      -webkit-text-size-adjust: none;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      white-space: nowrap;
+            } 
+    
+    @keyframes shine{
+    0%
+        {
+          background-position: 0;
+      }
+      70%{
+        background-position: 250px;
+      }
+      100% 
+      {
+        background-position: 180px;
+      }
+    }
+          </style>
+  </div>
+
+    <div class="none">
+    
+      <h1 class="ml10">
+          <span class="text-wrapper">
+            <span class="letters"> OFFER ZONE</span>
+          </span>
+        </h1>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <style>
+          
+        .ml10 {
+          position: relative;
+          font-weight: 900;
+          font-size: 3em;
+          
+        }
+        
+        .ml10 .text-wrapper {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          color: red;
+          margin-left: 50px;
+          margin-top: 5px;
+
+        }
+        
+        .ml10 .letter {
+          display: inline-block;
+          line-height: 1em;
+          transform-origin: 0 0;
+        }
+        
+        </style>
+        <script> 
+        var textWrapper = document.querySelector('.ml10 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        
+        anime.timeline({loop: true})
+          .add({
+            targets: '.ml10 .letter',
+            rotateY: [-90, 0],
+            duration: 1300,
+            delay: (el, i) => 45 * i
+          }).add({
+            targets: '.ml10',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1000
+          });
+        </script> 
+      <p>  <b> "when you have  <br> a lot to offer <br> you have a right <br> to be selective" </b></p> 
+      <h4> <img src="dec/image-removebg-preview.png" style="margin-left: 600px;"> </h4>
+      <h2> <img src="dec/robot_473379_grp20t-removebg-preview.png" > </h2>
+  </div>
+    <div class="more">
+        <h2 ><br> <img src="home/infl.png"> </h2>
+        <h1> </h1><br>
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                
+                <h3 class="animate-charcter" style="margin-left: 17px;"> INFLYNX i8 720S </h3>
+              </div>
+            </div>
+          </div>
+          <style>
+              .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 3em;
+      margin-left: 60px;
+      margin-top: 60px;
+      padding-left: 130px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+          </style>
+
+      <br>
+      <br>
+      <a href="spec/spec 7.html" target="self" class="btn-shine" target="_blank">learn more </a>
+      <style>
+        
+        .btn-shine{
+  position: absolute
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%,-50%);
+  padding: 12px 48px;
+  color: #ffffff;
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+        } 
+
+@keyframes shine{
+0%
+    {
+      background-position: 0;
+  }
+  70%{
+    background-position: 250px;
+  }
+  100% 
+  {
+    background-position: 180px;
+  }
+}
+      </style>
+          <a href="mob1.html" class="btn-shine" > buy now </a>
+          <style>
+            .btn-shine{
+      position: absolute
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      padding: 12px 48px;
+      color: #ffffff;
+      background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+      background-position: 0;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+      animation-fill-mode: forwards;
+      -webkit-text-size-adjust: none;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      white-space: nowrap;
+            } 
+    
+    @keyframes shine{
+    0%
+        {
+          background-position: 0;
+      }
+      70%{
+        background-position: 250px;
+      }
+      100% 
+      {
+        background-position: 180px;
+      }
+    }
+          </style>
+                
+<h3 class="ml16">OUT NOW</h3>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<style>
+.ml16 {
+  color: #402d2d;
+  padding: 40px 0;
+  font-weight: 800;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  overflow: hidden;
+  margin-left: 1030px;
+  margin-top: -500px;
+  color:#20c5ea;
+}
+
+.ml16 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+</style>
+<script>
+var textWrapper = document.querySelector('.ml16');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml16 .letter',
+    translateY: [-100,0],
+    easing: "easeOutExpo",
+    duration: 1400,
+    delay: (el, i) => 30 * i
+  }).add({
+    targets: '.ml16',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>       
+    </div>
+ 
+   
+    
+    <div class="last">
+        <h2> <br> <img src="home/infl.png"> </h2>
+        <h4> laptop</h4>
+        <h3 class="ml12">COMING SOON</h3>
+        
+       
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<style>
+.ml12 {
+  font-weight: 200;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: #20c5ea;
+  margin-left: 630px;
+  margin-top: 20px;
+}
+
+.ml12 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+</style>
+<script> 
+var textWrapper = document.querySelector('.ml12');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml12 .letter',
+    translateX: [40,0],
+    translateZ: 0,
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 1200,
+    delay: (el, i) => 500 + 30 * i
+  }).add({
+    targets: '.ml12 .letter',
+    translateX: [0,-30],
+    opacity: [1,0],
+    easing: "easeInExpo",
+    duration: 1100,
+    delay: (el, i) => 100 + 30 * i
+  });
+</script>
+     
+
+        <div class="lds-dual-ring"></div>
+        <style>
+        
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+          }
+          .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid rgb(255, 2, 2);
+            border-color: rgb(255, 255, 255) transparent rgb(25, 228, 66) transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+            margin-left: 760px;
+            margin-top: 150px;
+          }
+          @keyframes lds-dual-ring {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+          </style> 
+
+
+          <div class="lo">
+            <div class="content">
+              <h2 style="margin-left:200px;">INFLYNX Kato</h2>
+              <h2 style="margin-left:200px;">INFLYNX Kato </h2>
+            </div>
+         
+        
+        </div>
+            
+        
+
+          <style>
+              @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+        
+        .lo .content {
+          position: relative;
+        }
+        
+        .lo .content h2 {
+          color: #fff;
+          font-size: 6em;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          margin-left: 0px;
+          margin-top: -200px;
+        }
+        
+        .lo .content h2:nth-child(1) {
+          color: transparent;
+          -webkit-text-stroke: 2px #fff;
+        }
+        
+        .lo .content h2:nth-child(2) {
+          color: rgb(25, 228, 66);
+          animation: animate 4s ease-in-out infinite;
+        }
+        @keyframes animate {
+          0%,
+          100% {
+            clip-path: polygon(
+              0% 45%,
+              16% 44%,
+              33% 50%,
+              54% 60%,
+              70% 61%,
+              84% 59%,
+              100% 52%,
+              100% 100%,
+              0% 100%
+            );
+          }
+        
+          50% {
+            clip-path: polygon(
+              0% 60%,
+              15% 65%,
+              34% 66%,
+              51% 62%,
+              67% 50%,
+              84% 45%,
+              100% 46%,
+              100% 100%,
+              0% 100%
+            );
+          }
+        }
+          </style>
+    </div>
+    <div class="nor">
+        <h1><img src="dec/images.jpg"></h1>
+        <h3> <img src="dec/2.jpg"> </h3>
+        <h2> <img src="dec/1 (1).jpg"> </h2>
+    </div>
+    <div class="four">
+        <h1>  <br>  
+        </h1> 
+        <h3> <img src="home/infl.png" style="margin-left: 650px;" ></h3>
+        
+        
+<h2 class="ml13">INFLYNX</h2>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<style>
+.ml13 {
+  font-size: 1.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  color:black;
+  margin-left: 650px;
+  margin-bottom: 50px;
+}
+
+.ml13 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+</style>
+<script>
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml13');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml13 .letter',
+    translateY: [100,0],
+    translateZ: 0,
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 1400,
+    delay: (el, i) => 300 + 30 * i
+  }).add({
+    targets: '.ml13 .letter',
+    translateY: [0,-100],
+    opacity: [1,0],
+    easing: "easeInExpo",
+    duration: 1200,
+    delay: (el, i) => 100 + 30 * i
+  });
+</script>
+       
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+.main{
+    width: 100%;
+    background-image:  url("profile/tree.jpg") ; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+   
+}
+ object{
+    background-image: url("");
+    min-height: 100%;
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+
+}
+.drop{
+    position: relative;
+  display: inline-block;
+
+}
+.down {
+  display: none;
+  background: transparent;
+  position: absolute;
+  min-width: 160px;
+  padding: 12px -10px;
+}
+.drop:hover .down {
+  display: block;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 730px;
+    margin-top: 25px;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 92px;
+    margin-top: 27px;
+    font-size: 18px;
+    line-height: 2;
+}
+
+ul li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+    padding: px;
+ 
+}
+
+
+ul li a:hover{
+    color: rgb(98, 220, 41);
+}
+
+
+.search{
+    width: 330px;
+    float: left;
+    margin-top: 37px;
+    margin-left: 76px;
+}
+
+.srch{
+    font-family: 'Times New Roman';
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border: 1.5px solid rgb(0, 0, 0);
+    margin-top: 13px;
+    color: rgb(98, 220, 41);
+    border-right: none;
+    font-size: 16px;
+    float: left;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    background: black;
+    border: 2px solid black;
+    margin-top: 13px;
+    color: white ;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.btn:hover{
+    color:rgb(98, 220, 41);
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: rgb(0, 0, 0);
+    position: relative;
+    margin-left: 200px;
+    margin-top: 200px;
+
+}
+.content span{
+    color:  rgb(98, 220, 41);
+    font-size: 90px;
+    margin-left: 100px;
+}
+
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    margin-left: 100px;
+}
+
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+.content .cn{
+    width: 160px;
+    height: 40px;
+    background: black;
+    border: none;
+    margin-top: -10px;
+    margin-left: 130px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+    
+}
+
+.content .cn a{
+    text-decoration: none;
+    color: white;
+    transition: .3s ease;
+}
+
+.cn:hover{
+    background-color: lightseagreen;
+}
+.image{
+    margin-top: -600px;
+    margin-left: 1000px;
+}
+.im{
+    margin-top: -460px;
+    margin-left: 1195px;
+}
+h5{
+    margin-top: -492px;
+    margin-left: 700px;
+    font-size: 2em;
+}
+h5 a{
+    margin-left: 75px;
+    color: rgb(39, 102, 228);
+    text-decoration: none;
+    
+}
+h5 a:hover{
+    color: rgb(98, 220, 41);
+}
+.scroll{
+    background-image: url("home/photo-1588620353536-ded12e518f45.avif");
+    background-position: ;
+    height: 110vh;
+    width: 100%;
+    margin-top: 185px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.scroll h1{
+    color: red;
+    font-size: 4em;
+    padding-top: 100px;
+    padding-left: 100px;
+}
+.scroll h5{
+    color: white;
+    font-size: 2em;
+    padding-left: 320px;
+    padding-top: 1px;
+    margin-top: 80px;
+    margin-left: 60px;
+}
+
+.scroll a{
+
+    padding-left: ;
+    margin-left: 180px;
+    padding-left: 190px;
+    font-size: 2em;
+    
+}
+.scroll a:hover{
+    color: rgb(98, 220, 41);
+    
+}
+.none h3 {
+    color: red;
+    font-size: 4em;
+    margin-top: -400px;
+    margin-left: 180px;
+}
+.none  p{
+    color: black;
+    font-size: 2.5em;
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.none h4{
+    margin-right: 100px ;
+    margin-top: -410px;
+    
+}
+.none h2{
+    margin-left: 900px;
+    margin-top: -350px;
+}
+.more{
+    background-image: url("home/phone-mobile-phone-screen-saver-time.jpg");
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 110vh;
+}
+.more h1{
+    color: red;
+    font-size: 4em;
+    padding-top: 160px;
+    padding-left: 100px;
+}
+.more li{
+    color: white;
+    font-size: 2em;
+    padding-left: 150px;
+    padding-top: 10px;
+}
+.more a{
+    color: rgb(11, 255, 222);
+    padding-left: 100px;
+    padding-top: 60px;
+    font-size: 2em;
+    
+}
+.more a:hover{
+    color: rgb(98, 220, 41);
+    
+}
+
+.nor h1{ 
+            margin-top: 40px;
+            margin-left: 20px;
+            margin-left: 150px;
+           
+        }
+        .nor h2{
+            margin-top: -200px;
+            margin-left: 1200px;
+            margin-bottom: 40px;
+    
+    
+        }.nor h3{
+            margin-top: -200px;
+            margin-left: 710px;
+        
+            
+        }
+.last{
+    background-image: url("home/lap.jpg");
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+   
+
+}
+.last h1{
+    color: white;
+    font-size: 5em;
+    padding-left: 500px;
+    padding-top: 40px;
+
+}
+.last h2{
+    margin-left: 700px;
+}
+
+.four{
+    background-image: url("home/istockphoto-1247921716-612x612.jpg");
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+.four h1{
+    color: rgb(0, 0, 0);
+    font-size: 4em;
+    padding-top: 500px;
+    padding-left: 630px;
+}
+
+
+</style> 
+
+<section class="footer">
+
+    <div class="box-container">
+  
+        <div class="box">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <h3><i class="fa fa-shopping-cart"></i>  Inflynx  </h3>
+            <p> Just One Touch Away<br>
+                From Infinity</p>
+            <div class="share">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+<a href="https://twitter.com/i/flow/login" class="fa fa-twitter" target="_blank"></a>
+<a href="https://www.google.co.in/" class="fa fa-google" target="_blank"></a>
+<a href="https://in.linkedin.com/" class="fa fa-linkedin" target="_blank"></a>
+<br> <br>
+<a href="https://www.instagram.com/accounts/login/" class="fa fa-instagram" target="_blank"></a>
+<a href="https://in.pinterest.com/login/" class="fa fa-pinterest" target="_blank"></a>
+            </div>
+        </div>
+  
+        <div class="box">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <h3>contact info</h3>
+            <a href="tel:123-456-7890" class="links"> <i class="fa fa-phone"></i> +123-456-7890 </a>
+            <a href="tel:123-456-7890" class="links"> <i class="fa fa-phone"></i> +111-222-3333 </a>
+            <a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank" class="links"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <i class="fa fa-envelope" style="font-size:24px"></i> Inflynx@gmail.com</a>
+            <a href="#" class="links">  cbe, india </a>
+        
+        </div>
+  
+        <div class="box">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <h3>quick links</h3>
+            
+            <a href="#" class="links"><i class="fa fa-angle-right"></i> Home </a>
+          <a href="mob1.html" class="links"><i class="fa fa-angle-right"></i>  Mobile </a>
+          <a href="lap1.html" class="links"><i class="fa fa-angle-right"></i> Laptops</a>
+          <a href="warranty2.html" class="links"> <i class="fa fa-angle-right"></i> Warranty & Services </a>
+            <a href="aboutus2.html" class="links"><i class="fa fa-angle-right"></i>  About us </a>
+         
+         
+        </div>
+  
+        
+        <div class="box">
+          <h3>newsletter</h3>
+          <p style="margin-left: -1px;">subscribe for latest updates</p>
+          <form onsubmit="check()"> 
+          <input type="email" placeholder="your email" class="email" id="done">
+          <input type="submit" value="subscribe" class="btnn" ></form>
+      </div>
+      <script>
+        function check(){
+          let x=document.getElementById("done").value;
+
+          if(x=="")
+          {
+            alert("enter email");
+       
+          }
+          else{
+            alert("thanks for subscription");
+          }
+
+        }
+      </script>
+    </div>
+  </div>
+
+</section>
+<style>
+
+  
+.footer{
+    background: rgb(0, 0, 0);
+    
+    
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+  --green:green;
+  --black:#20c5ea;
+  --light-color:rgb(247, 247, 247);
+  --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+  --border:.2rem solid rgba(0,0,0,.1);
+  --outline:.1rem solid rgba(0,0,0,.1);
+  --outline-hover:.2rem solid var(--black);
+}
+*{
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+
+.btnn{
+  margin-top: 1rem;
+  display: inline-block;
+  padding:.8rem 3rem;
+  font-size: 1.0rem;
+  border-radius: .5rem;
+  border:.2rem solid var(--black);
+  color:var(--black);
+  cursor: pointer;
+  background: none;
+}
+
+.btnn:hover{
+  background: var(--green);
+  color:#fff;
+}
+.footer .box-container{
+    color: #eee;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap:1.5rem;
+}
+
+.footer .box-container .box h3{
+    font-size: 2.5rem;
+    color:var(--black);
+    padding:1rem 0;
+    margin-left: 10px;
+}
+
+.footer .box-container .box h3 i{
+    color:var(--green);
+}
+
+.footer .box-container .box .links{
+    display: block;
+    font-size: 1.5rem;
+    color:var(--light-color);
+    padding:1rem 0;
+}
+
+.footer .box-container .box .links i{
+    color:var(--green);
+    padding-right: .5rem;
+}
+
+.footer .box-container .box .links:hover i{
+    padding-right: 2rem;
+}
+
+
+.footer .box-container .box p{
+    line-height: 1.8;
+    font-size: 1.5rem;
+    color:var(--light-color);
+    padding:1rem 0;
+    margin-left: 30px;
+}
+
+.footer .box-container .box .share a{
+    height:4rem;
+    width:4rem;
+    line-height:4rem;
+    border-radius: .5rem;
+    font-size: 2rem;
+    color:var(--black);
+    margin-left: 25px;
+    background: #eee;
+    text-align: center;
+}
+
+.footer .box-container .box .share a:hover{
+    background: var(--green);
+    color: #fff;
+}
+
+.footer .box-container .box .email{
+    width: 80%;
+    margin:.7rem 0;
+    padding:1rem;
+    border-radius: .5rem;
+    background: #eee;
+    font-size: 1.6rem;
+    color:var(--black);
+    text-transform: none;
+}
+
+.footer .box-container .box .payment-img{
+    margin-top: 2rem;
+    height: 3rem;
+    display: block;
+}
+
+.footer .credit{
+    text-align: center;
+    margin-top: 2rem;
+    padding:1rem;
+    padding-top: 2.5rem;
+    font-size: 2rem;
+    color:var(--black);
+    border-top: var(--border);
+}
+
+.footer .credit span{
+    color:var(--green);
+}
+</style>
+</body>
+</html>
